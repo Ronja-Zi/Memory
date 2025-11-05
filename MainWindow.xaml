@@ -22,6 +22,7 @@
                 </DockPanel>
 
         </Border>
+        <Button Content="Button"/>
 
 
 
