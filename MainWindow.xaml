@@ -17,12 +17,52 @@
         <Border Background="#ca9aa2" Padding="12" Grid.Row="0"
         BorderBrush="#33384D" BorderThickness="0,0,0,1">
             <!-- DockPanel: teilt Inhalt in links/rechts -->
-            <DockPanel >
+
+            <DockPanel LastChildFill="False">
+                <!-- Linke Seite: Buttons -->
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <Button x:Name="BtnNewGame"
+                    Content="Neues Spiel"
+                    Width="130" Height="36"
+                    Margin="0,0,8,0" Click="BtnNewGame_Click" Background="#FFF7DDE1" FontFamily="Perpetua Titling MT" FontWeight="Bold"/>
+                    <Button x:Name="BtnReset"
+                    
+                    Content="Reset"
+                    Width="90" Height="36" Background="#FFF7DDE1"/>
+                </StackPanel>
                 
-                </DockPanel>
+                <!-- Rechte Seite: Zeit & Züge -->
+                <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Right"
+                    VerticalAlignment="Center">
+                    
+                    <!-- Zeit wird hier angezeigt -->
+                    <TextBlock Text="Zeit: " Foreground="White" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtTime"
+                       Text="00:00"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Margin="4,0,16,0"
+                       VerticalAlignment="Center"/>
+                    
+                    <!-- Züge werden hier angezeigt -->
+                    <TextBlock Text="Züge: " Foreground="White" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtMoves"
+                       Text="0"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Margin="4,0,0,0"
+                       VerticalAlignment="Center"/>
+
+                </StackPanel>
+
+
+
+            </DockPanel>
 
         </Border>
-        <Button Content="Button"/>
+        <DockPanel LastChildFill="False" Grid.Row="1"/>
+
 
 
 

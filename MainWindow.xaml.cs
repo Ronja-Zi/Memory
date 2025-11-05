@@ -27,5 +27,10 @@ namespace Memory
             // - Stimmen die Namen und Namespaces überein?
             InitializeComponent();
         }
+
+        private void BtnNewGame_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
