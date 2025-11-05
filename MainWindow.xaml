@@ -1,0 +1,34 @@
+﻿<Window x:Class="MemoryGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Memory" Height="740" Width="660"
+        WindowStartupLocation="CenterScreen"
+        Background="#fdc1cb "> 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Zeile 0, oben -->
+            <RowDefinition Height="*"/>
+            <!--Nimmt den Restlichen Platz = stern / Zeile 1, Mitte -->
+            <RowDefinition Height="Auto"/>
+            <!-- Passt sich automatisch dem Inhalt an = auto / Zeile 2, unten -->
+        </Grid.RowDefinitions>
+
+        <Border Background="#ca9aa2" Padding="12" Grid.Row="0"
+        BorderBrush="#33384D" BorderThickness="0,0,0,1">
+            <!-- DockPanel: teilt Inhalt in links/rechts -->
+            <DockPanel >
+                
+                </DockPanel>
+
+        </Border>
+
+
+
+
+
+
+
+    </Grid>
+
+</Window>
