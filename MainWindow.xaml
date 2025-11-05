@@ -1,4 +1,4 @@
-﻿<Window x:Class="MemoryGame.MainWindow"
+﻿<Window x:Class="Memory.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Memory" Height="740" Width="660"

@@ -18,6 +18,13 @@ namespace Memory
     {
         public MainWindow()
         {
+            // Die Methode InitializeComponent wird von der automatisch generierten Datei MainWindow.g.i.cs bereitgestellt,
+            // die durch das Kompilieren der XAML-Datei MainWindow.xaml erzeugt wird.
+            // Wenn die Datei fehlt oder nicht korrekt eingebunden ist, überprüfen Sie:
+            // - Existiert die Datei MainWindow.xaml im Projekt?
+            // - Ist das Build Action der XAML-Datei auf "Page" gesetzt?
+            // - Ist die Klasse MainWindow als "partial" deklariert?
+            // - Stimmen die Namen und Namespaces überein?
             InitializeComponent();
         }
     }
