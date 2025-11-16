@@ -61,7 +61,24 @@
             </DockPanel>
 
         </Border>
-        <DockPanel LastChildFill="False" Grid.Row="1"/>
+        <Grid x:Name="CardGrid" Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+       
+
 
 
 
