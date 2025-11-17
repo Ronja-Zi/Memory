@@ -3,64 +3,69 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Memory" Height="740" Width="660"
         WindowStartupLocation="CenterScreen"
-        Background="#fdc1cb "> 
+        Background="#fdc1cb">
+
     <Grid>
+        <!-- Zeilen: Header, CardGrid, Footer -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Zeile 0, oben -->
+            <!-- Obere Leiste -->
             <RowDefinition Height="*"/>
-            <!--Nimmt den Restlichen Platz = stern / Zeile 1, Mitte -->
+            <!-- Karten -->
             <RowDefinition Height="Auto"/>
-            <!-- Passt sich automatisch dem Inhalt an = auto / Zeile 2, unten -->
+            <!-- Footer -->
         </Grid.RowDefinitions>
 
+        <!-- Header -->
         <Border Background="#ca9aa2" Padding="12" Grid.Row="0"
-        BorderBrush="#33384D" BorderThickness="0,0,0,1">
-            <!-- DockPanel: teilt Inhalt in links/rechts -->
+                BorderBrush="#33384D" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Linke Buttons -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Abstand -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Rechte Seite: Zeit & Züge -->
+                </Grid.ColumnDefinitions>
 
-            <DockPanel LastChildFill="False">
-                <!-- Linke Seite: Buttons -->
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <!-- Linke Buttons -->
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
                     <Button x:Name="BtnNewGame"
-                    Content="Neues Spiel"
-                    Width="130" Height="36"
-                    Margin="0,0,8,0" Click="BtnNewGame_Click" Background="#FFF7DDE1" FontFamily="Perpetua Titling MT" FontWeight="Bold"/>
+                            Content="Neues Spiel"
+                            Width="130" Height="36"
+                            Margin="0,0,8,0"
+                            Click="BtnNewGame_Click"
+                            Background="#FFF7DDE1"
+                            FontFamily="Perpetua Titling MT"
+                            FontWeight="Bold"/>
                     <Button x:Name="BtnReset"
-                    
-                    Content="Reset"
-                    Width="90" Height="36" Background="#FFF7DDE1"/>
+                            Content="Reset"
+                            Width="90" Height="36"
+                            Background="#FFF7DDE1"/>
                 </StackPanel>
-                
+
                 <!-- Rechte Seite: Zeit & Züge -->
-                <StackPanel Orientation="Horizontal"
-                    DockPanel.Dock="Right"
-                    VerticalAlignment="Center">
-                    
-                    <!-- Zeit wird hier angezeigt -->
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <TextBlock Text="Zeit: " Foreground="White" VerticalAlignment="Center"/>
                     <TextBlock x:Name="TxtTime"
-                       Text="00:00"
-                       Foreground="White"
-                       FontWeight="Bold"
-                       Margin="4,0,16,0"
-                       VerticalAlignment="Center"/>
-                    
-                    <!-- Züge werden hier angezeigt -->
+                               Text="00:00"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               Margin="4,0,16,0"
+                               VerticalAlignment="Center"/>
                     <TextBlock Text="Züge: " Foreground="White" VerticalAlignment="Center"/>
                     <TextBlock x:Name="TxtMoves"
-                       Text="0"
-                       Foreground="White"
-                       FontWeight="Bold"
-                       Margin="4,0,0,0"
-                       VerticalAlignment="Center"/>
-
+                               Text="0"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               Margin="4,0,0,0"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
-
-
-
-            </DockPanel>
-
+            </Grid>
         </Border>
+
+        <!-- CardGrid -->
         <Grid x:Name="CardGrid" Grid.Row="1" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -68,25 +73,15 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
         </Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-       
-
-
-
-
-
-
-
-
-
+        
     </Grid>
-
 </Window>
