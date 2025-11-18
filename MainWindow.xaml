@@ -61,6 +61,14 @@
                                FontWeight="Bold"
                                Margin="4,0,0,0"
                                VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtPlayer"
+                               Text="1"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Margin="4,0,0,0"/>
+                      
+                    
                 </StackPanel>
             </Grid>
         </Border>
