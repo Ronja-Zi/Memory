@@ -4,7 +4,7 @@
         Title="Memory" Height="740" Width="660"
         WindowStartupLocation="CenterScreen"
         Background="#fc7d98">
-
+    
     <Grid>
         <!-- Zeilen: Header, CardGrid, Footer -->
         <Grid.RowDefinitions>
@@ -137,6 +137,52 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
         </Grid>
-        
+        <!-- WINNER OVERLAY -->
+        <Grid x:Name="WinnerOverlay"
+      Grid.RowSpan="3"
+      Background="#80000000"
+      Visibility="Collapsed">
+
+            <Border Width="360"
+            Padding="20"
+            Background="Black"
+            CornerRadius="12"
+            BorderBrush="#FFDF0B6A"
+            BorderThickness="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel HorizontalAlignment="Center">
+
+                    <TextBlock x:Name="TxtWinnerTitle"
+                       Text="Gewonnen!"
+                       FontFamily="Agency FB"
+                       FontWeight="Bold"
+                       FontSize="32"
+                       Foreground="DeepPink"
+                       TextAlignment="Center"
+                       Margin="0,0,0,10"/>
+
+                    <TextBlock x:Name="TxtWinnerMessage"
+                       Text="Spieler 1 hat gewonnen."
+                       FontFamily="Agency FB"
+                       FontSize="18"
+                       Foreground="White"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,20"/>
+
+                    <Button Content="Neues Spiel"
+                    Width="140" Height="36"
+                    Click="BtnNewGame_Click"
+                    Background="DeepPink"
+                    BorderBrush="DeepPink"
+                    FontFamily="Agency FB"
+                    FontWeight="Bold"/>
+                </StackPanel>
+
+            </Border>
+        </Grid>
+
     </Grid>
 </Window>

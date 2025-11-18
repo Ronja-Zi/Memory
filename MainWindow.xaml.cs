@@ -47,10 +47,15 @@ namespace Memory
         // --------------- NEUES SPIEL BUTTON ----------------
         private void BtnNewGame_Click(object sender, RoutedEventArgs e)
         {
+            // Overlay ausblenden, falls sichtbar
+            WinnerOverlay.Visibility = Visibility.Collapsed;
+            isBusy = false;
+
             gameTimer.Stop();
             InitializeGame();
             StartTimer();
         }
+
 
         // ---------------- TIMER TICK EVENT ----------------
         private void GameTimer_Tick(object sender, EventArgs e)
@@ -137,12 +142,11 @@ namespace Memory
                     Button = new Button
                     {
                         Tag = i,
-                        Background = Brushes.Transparent,          // graue Umrandung weg
+                        Background = Brushes.Transparent,
                         BorderThickness = new Thickness(0),
                         Margin = new Thickness(4),
                         HorizontalContentAlignment = HorizontalAlignment.Stretch,
                         VerticalContentAlignment = VerticalAlignment.Stretch,
-                       
                     }
 
 
@@ -230,6 +234,8 @@ namespace Memory
 
                 UpdatePlayerDisplay();
                 ResetSelection();
+
+                // Prüfen, ob das Spiel vorbei ist
                 CheckForGameEnd();
             }
 
@@ -307,32 +313,48 @@ namespace Memory
             TxtScoreP1.Text = $"P1: {scores[0]}";
             TxtScoreP2.Text = $"P2: {scores[1]}";
         }
+        
         private void CheckForGameEnd()
         {
             // Sind alle Karten gefunden?
-            if (cards.All(c => c.IsMatched))
+            if (!cards.All(c => c.IsMatched))
+                return;
+
+            gameTimer.Stop();
+            isBusy = true; // keine weiteren Klicks
+
+            string title;
+            string message;
+
+            if (scores[0] > scores[1])
             {
-                gameTimer.Stop(); // Zeit anhalten
-
-                string message;
-
-                if (scores[0] > scores[1])
-                {
-                    message = $"Spieler 1 hat gewonnen!\n\nP1: {scores[0]} Paare\nP2: {scores[1]} Paare";
-                }
-                else if (scores[1] > scores[0])
-                {
-                    message = $"Spieler 2 hat gewonnen!\n\nP1: {scores[0]} Paare\nP2: {scores[1]} Paare";
-                }
-                else
-                {
-                    message = $"Unentschieden!\n\nP1: {scores[0]} Paare\nP2: {scores[1]} Paare";
-                }
-
-                MessageBox.Show(message, "Spiel beendet",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
-                // Danach bleibt das Board so – Spieler kann oben auf "Neues Spiel" klicken
+                title = "Spieler 1 gewinnt!";
+                message = $"Spieler 1 hat mit {scores[0]} Paar(en) gewonnen.\n" +
+                          $"Spieler 2 hat {scores[1]} Paar(e).";
+                currentPlayer = 1;
             }
+            else if (scores[1] > scores[0])
+            {
+                title = "Spieler 2 gewinnt!";
+                message = $"Spieler 2 hat mit {scores[1]} Paar(en) gewonnen.\n" +
+                          $"Spieler 1 hat {scores[0]} Paar(e).";
+                currentPlayer = 2;
+            }
+            else
+            {
+                title = "Unentschieden!";
+                message = $"Beide haben {scores[0]} Paar(e) gefunden.";
+            }
+
+            // Spieleranzeige in der Mitte anpassen
+            UpdatePlayerDisplay();
+
+            // Overlay-Text setzen
+            TxtWinnerTitle.Text = title;
+            TxtWinnerMessage.Text = message;
+
+            // Overlay anzeigen
+            WinnerOverlay.Visibility = Visibility.Visible;
         }
 
 
