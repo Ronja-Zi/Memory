@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Memory" Height="740" Width="660"
         WindowStartupLocation="CenterScreen"
-        Background="#fdc1cb">
+        Background="#fc7d98">
 
     <Grid>
         <!-- Zeilen: Header, CardGrid, Footer -->
@@ -17,58 +17,106 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Border Background="#ca9aa2" Padding="12" Grid.Row="0"
-                BorderBrush="#33384D" BorderThickness="0,0,0,1">
+        <!-- Header -->
+        <Border Background="Black" Padding="8" Grid.Row="0"
+        BorderBrush="#33384D" BorderThickness="0,0,0,1">
             <Grid>
+                <!-- 2 Zeilen: oben Spieler/Buttons/Zeit, unten Scores -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 3 Spalten: Buttons | Mitte | Zeit/Züge -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <!-- Linke Buttons -->
-                    <ColumnDefinition Width="*"/>
-                    <!-- Abstand -->
-                    <ColumnDefinition Width="Auto"/>
-                    <!-- Rechte Seite: Zeit & Züge -->
+                    <!-- Buttons -->
+                    <ColumnDefinition/>
+                    <!-- Mitte -->
+                    <ColumnDefinition Width="138"/>
+                    <!-- Zeit & Züge -->
                 </Grid.ColumnDefinitions>
 
                 <!-- Linke Buttons -->
-                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                <StackPanel Grid.Row="0" Grid.Column="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
                     <Button x:Name="BtnNewGame"
-                            Content="Neues Spiel"
-                            Width="130" Height="36"
-                            Margin="0,0,8,0"
-                            Click="BtnNewGame_Click"
-                            Background="#FFF7DDE1"
-                            FontFamily="Perpetua Titling MT"
-                            FontWeight="Bold"/>
-                    <Button x:Name="BtnReset"
-                            Content="Reset"
-                            Width="90" Height="36"
-                            Background="#FFF7DDE1"/>
+                    Content="Neues Spiel"
+                    Width="130" Height="36"
+                    Margin="0,0,8,0"
+                    Click="BtnNewGame_Click"
+                    Background="DeepPink"
+                    BorderBrush="#FFDF0B6A"
+                    FontFamily="Agency FB"
+                    FontWeight="Bold"
+                    FontSize="18"/>
                 </StackPanel>
 
+                <!-- Spieleranzeige in der Mitte (groß, fett, farbig) -->
+                <TextBlock x:Name="TxtPlayer" Grid.Column="1"
+                   Text="Spieler 1"
+                   FontFamily="Agency FB"
+                   FontWeight="Bold"
+                   FontSize="32"
+                   Foreground="DeepPink"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Margin="0,-3,0,0"/>
+
+                <!-- Punktezähler unter der Spieleranzeige -->
+                
+                <StackPanel Grid.Row="1" Grid.Column="1"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="0,0,0,4">
+                    <TextBlock x:Name="TxtScoreP1"
+               Text="P1: 0"
+               FontSize="14"
+               FontWeight="Bold"
+               Foreground="DeepPink"
+               FontFamily="Agency FB"
+               Margin="0,0,12,0"/>
+                    <TextBlock x:Name="TxtScoreP2"
+               Text="P2: 0"
+               FontSize="14"
+               FontWeight="Bold"
+               Foreground="SkyBlue"
+               FontFamily="Agency FB"/>
+                </StackPanel>
+
+
                 <!-- Rechte Seite: Zeit & Züge -->
-                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock Text="Zeit: " Foreground="White" VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="0" Grid.Column="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0,0,20,0">
+                    <TextBlock Text="Zeit: "
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       FontFamily="Agency FB"
+                       FontWeight="Bold"
+                       FontSize="16"/>
                     <TextBlock x:Name="TxtTime"
-                               Text="00:00"
-                               Foreground="White"
-                               FontWeight="Bold"
-                               Margin="4,0,16,0"
-                               VerticalAlignment="Center"/>
-                    <TextBlock Text="Züge: " Foreground="White" VerticalAlignment="Center"/>
+                       Text="00:00"
+                       Foreground="White"
+                       Margin="4,0,16,0"
+                       VerticalAlignment="Center"
+                       FontFamily="Agency FB"/>
+                    <TextBlock Text="Züge: "
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       FontFamily="Agency FB"
+                       FontWeight="Bold"
+                       FontSize="16"/>
                     <TextBlock x:Name="TxtMoves"
-                               Text="0"
-                               Foreground="White"
-                               FontWeight="Bold"
-                               Margin="4,0,0,0"
-                               VerticalAlignment="Center"/>
-                    <TextBlock x:Name="TxtPlayer"
-                               Text="1"
-                               Foreground="White"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"
-                               Margin="4,0,0,0"/>
-                      
-                    
+                       Text="0"
+                       Foreground="White"
+                       Margin="4,0,0,0"
+                       VerticalAlignment="Center"
+                       FontFamily="Agency FB"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -89,7 +137,6 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
         </Grid>
-
         
     </Grid>
 </Window>

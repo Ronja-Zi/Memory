@@ -9,6 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\amongus1.png" />
+    <None Remove="Images\amongus2.png" />
+    <None Remove="Images\cowgirl1.png" />
+    <None Remove="Images\cowgirl2.png" />
+    <None Remove="Images\darthvader1.png" />
+    <None Remove="Images\darthvader2.png" />
+    <None Remove="Images\itachi1.png" />
+    <None Remove="Images\itachi2.png" />
+    <None Remove="Images\minecraft1.png" />
+    <None Remove="Images\minecraft2.png" />
+    <None Remove="Images\naruto1.png" />
+    <None Remove="Images\naruto2.png" />
+    <None Remove="Images\spiderman1.png" />
+    <None Remove="Images\spiderman2.png" />
+    <None Remove="Images\wednesday1.png" />
+    <None Remove="Images\wednesday2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Karten\" />
   </ItemGroup>
 
