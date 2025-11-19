@@ -25,9 +25,17 @@
     <None Remove="Images\spiderman2.png" />
     <None Remove="Images\wednesday1.png" />
     <None Remove="Images\wednesday2.png" />
+    <None Remove="Sounds\ping%28alt%29.mp3" />
+    <None Remove="Sounds\ping.mp3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Sounds\ping(alt).mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\ping.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\win.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

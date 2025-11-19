@@ -29,6 +29,7 @@ namespace Memory
         private bool isBusy = false;
 
         private MediaPlayer winSound = new MediaPlayer(); //für mp3 datei
+        private MediaPlayer matchSound = new MediaPlayer(); // Ping bei Treffer
 
         // Rahmenfarben für Spieler
         private readonly Brush player1Brush = Brushes.DeepPink;
@@ -46,6 +47,10 @@ namespace Memory
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             string soundPath = System.IO.Path.Combine(baseDir, "Sounds", "win.mp3"); // Die mp3 datei im Sounds ordner
             winSound.Open(new Uri(soundPath, UriKind.Absolute));
+
+            // ---- Ping (für Match) SOUND LADEN ----
+            string matchPath = System.IO.Path.Combine(baseDir, "Sounds", "ping.mp3"); // Dateiname von Ping-Sound
+            matchSound.Open(new Uri(matchPath, UriKind.Absolute));
 
             InitializeGame();
             StartTimer();
@@ -230,6 +235,11 @@ namespace Memory
                 firstCard.IsMatched = true;
                 secondCard.IsMatched = true;
 
+                // Ping abspielen
+                matchSound.Stop();
+                matchSound.Position = TimeSpan.Zero;
+                matchSound.Play();
+
                 // Karten mit Spielerfarbe markieren
                 MarkCardOwner(firstCard, currentPlayer);
                 MarkCardOwner(secondCard, currentPlayer);
@@ -250,7 +260,7 @@ namespace Memory
             else
             {
                 // Kein Treffer → 0,8s warten, dann umdrehen
-                await Task.Delay(800);
+                await Task.Delay(1500);
 
                 HideCard(firstCard);
                 HideCard(secondCard);
@@ -368,7 +378,6 @@ namespace Memory
             // Overlay anzeigen
             WinnerOverlay.Visibility = Visibility.Visible;
         }
-
 
     }
 }
