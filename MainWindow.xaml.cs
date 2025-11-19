@@ -12,7 +12,7 @@ namespace Memory
 {
     public partial class MainWindow : Window
     {
-        // --------------- FELDER ----------------
+        // --------------- FELDER (karten etc) ----------------
         private List<MemoryCard> cards = new List<MemoryCard>();
         private Random rnd = new Random();
         private int moves = 0;
@@ -28,10 +28,12 @@ namespace Memory
 
         private bool isBusy = false;
 
+        private MediaPlayer winSound = new MediaPlayer(); //für mp3 datei
+
         // Rahmenfarben für Spieler
         private readonly Brush player1Brush = Brushes.DeepPink;
         private readonly Brush player2Brush = Brushes.SkyBlue;
-
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +41,11 @@ namespace Memory
             // Timer EINMAL konfigurieren
             gameTimer.Interval = TimeSpan.FromSeconds(1);
             gameTimer.Tick += GameTimer_Tick;
+
+            // ---- WIN SOUND LADEN ----
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string soundPath = System.IO.Path.Combine(baseDir, "Sounds", "win.mp3"); // Die mp3 datei im Sounds ordner
+            winSound.Open(new Uri(soundPath, UriKind.Absolute));
 
             InitializeGame();
             StartTimer();
@@ -296,7 +303,7 @@ namespace Memory
             card.Button.Content = img;
 
         }
-        // Karte mit Spielerfarbe umranden
+        // Karte mit Spielerfarbe umranden!
         private void MarkCardOwner(MemoryCard card, int player)
         {
             Brush brush = player == 1 ? player1Brush : player2Brush;
@@ -314,7 +321,7 @@ namespace Memory
             TxtScoreP2.Text = $"P2: {scores[1]}";
         }
         
-        private void CheckForGameEnd()
+        private void CheckForGameEnd() //game ende, wie der Name schon sagt (check)
         {
             // Sind alle Karten gefunden?
             if (!cards.All(c => c.IsMatched))
@@ -323,10 +330,15 @@ namespace Memory
             gameTimer.Stop();
             isBusy = true; // keine weiteren Klicks
 
+            // Win-Sound abspielen (MediaPlayer also mp3)
+            winSound.Stop();
+            winSound.Position = TimeSpan.Zero; //immer von anfang starten
+            winSound.Play(); //abspielen
+
             string title;
             string message;
 
-            if (scores[0] > scores[1])
+            if (scores[0] > scores[1]) //ausgabe
             {
                 title = "Spieler 1 gewinnt!";
                 message = $"Spieler 1 hat mit {scores[0]} Paar(en) gewonnen.\n" +

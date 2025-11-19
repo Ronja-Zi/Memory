@@ -28,7 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Karten\" />
+    <Content Include="Sounds\win.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
